@@ -10,7 +10,7 @@ $(document).ready(function() {
       //alert("sono vivo 2");
       $.ajax({
         url: urlApi,
-        //uso get per lettura
+        //uso post per inviare
         type: "POST",
         data : {
           "text": $('#inputNota').val()
@@ -18,6 +18,7 @@ $(document).ready(function() {
         success: function(data) {
           //faccio una stampa di prova di tutto il contenuto api
           console.log(data);
+          //rilancio la lettura
           ajaxGet(urlApi);
 
         },
@@ -27,18 +28,19 @@ $(document).ready(function() {
       })
     });
 
-    $("#btnCancella").click(function(){
+    $(document).on('click', '.elimina', function(){
         //alert("sono vivo 2");
-        console.log($(this).attr("id"));
+        var idData = $(this).attr("id")
+        console.log("id da eliminare : " + idData);
         $.ajax({
-          url: urlApi,
-          //uso get per lettura
+          url: urlApi + "/" + idData,
+          //uso delete per eliminare
           type: "DELETE",
           success: function(data) {
             //faccio una stampa di prova di tutto il contenuto api
             console.log(data);
+            //rilancio la lettura
             ajaxGet(urlApi);
-
           },
           error: function(errore) {
 
@@ -75,7 +77,7 @@ $(document).ready(function() {
       console.log(id);
       //resetto
       //stamp in html
-      $("#listaApi").append("<li id=" + id + ">" + testoApi + "<i id='btnCancella' class='fas fa-trash-alt'></i>"+ "</li>");
+      $("#listaApi").append("<li id=" + id + " class='elimina'>" + testoApi + "<i id='btnCancella' class='fas fa-trash-alt'></i>"+ "</li>");
       $("#listaApi").html();
 
     }
