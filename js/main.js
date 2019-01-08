@@ -27,6 +27,25 @@ $(document).ready(function() {
       })
     });
 
+    $("#btnCancella").click(function(){
+        //alert("sono vivo 2");
+        console.log($(this).attr("id"));
+        $.ajax({
+          url: urlApi,
+          //uso get per lettura
+          type: "DELETE",
+          success: function(data) {
+            //faccio una stampa di prova di tutto il contenuto api
+            console.log(data);
+            ajaxGet(urlApi);
+
+          },
+          error: function(errore) {
+
+          }
+        })
+      });
+
 
 
   //funzione stampa api
@@ -55,9 +74,9 @@ $(document).ready(function() {
       console.log(testoApi);
       console.log(id);
       //resetto
-      $(".wrapListaApi").html('');
       //stamp in html
-      $("#listaApi").append("<li id=" + id + ">" + testoApi + "</li>");
+      $("#listaApi").html();
+      $("#listaApi").append("<li id=" + id + ">" + testoApi + "<i id='btnCancella' class='fas fa-trash-alt'></i>"+ "</li>");
     }
   }
 
