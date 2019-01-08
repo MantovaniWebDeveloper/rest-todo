@@ -75,8 +75,9 @@ $(document).ready(function() {
       console.log(id);
       //resetto
       //stamp in html
-      $("#listaApi").html();
       $("#listaApi").append("<li id=" + id + ">" + testoApi + "<i id='btnCancella' class='fas fa-trash-alt'></i>"+ "</li>");
+      $("#listaApi").html();
+
     }
   }
 
