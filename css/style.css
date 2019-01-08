@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  height: 60px;
+  width: 100%;
+  background-color: rgb(98, 208, 152);
+}
+header h2 {
+  text-align: center;
+  line-height: 60px;
+}
+body {
+  background-color: rgb(227, 241, 222);
+}
+
+.wrapApi {
+  height: calc(100vh - 60px);
+  padding: 10px;
+}
+.container {
+  width: 40%;
+  margin: 0 auto;
+  background-color: rgb(237, 231, 83);
+  height: 100%;
+  border-radius: 5px;
+}
