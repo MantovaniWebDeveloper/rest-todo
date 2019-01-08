@@ -55,4 +55,5 @@ ul li {
 ul li i {
   float: right;
   cursor: pointer;
+  margin-left: 15px;
 }

@@ -6,52 +6,50 @@ $(document).ready(function() {
   //creo una chiamata ajax per connettermi e scrivere nuova nota
   ajaxGet(urlApi);
 
-  $("#btnSalva").click(function(){
-      //alert("sono vivo 2");
-      $.ajax({
-        url: urlApi,
-        //uso post per inviare
-        type: "POST",
-        data : {
-          "text": $('#inputNota').val()
-        },
-        success: function(data) {
-          //faccio una stampa di prova di tutto il contenuto api
-          console.log(data);
-          //rilancio la lettura
-          ajaxGet(urlApi);
+  $("#btnSalva").click(function() {
+    //alert("sono vivo 2");
+    $.ajax({
+      url: urlApi,
+      //uso post per inviare
+      type: "POST",
+      data: {
+        "text": $('#inputNota').val()
+      },
+      success: function(data) {
+        //faccio una stampa di prova di tutto il contenuto api
+        console.log(data);
+        //rilancio la lettura
+        ajaxGet(urlApi);
 
-        },
-        error: function(errore) {
+      },
+      error: function(errore) {
 
-        }
-      })
-    });
+      }
+    })
+  });
 
-    $(document).on('click', '.elimina', function(){
-        //alert("sono vivo 2");
-        var idData = $(this).attr("id")
-        console.log("id da eliminare : " + idData);
-        $.ajax({
-          url: urlApi + "/" + idData,
-          //uso delete per eliminare
-          type: "DELETE",
-          success: function(data) {
-            //faccio una stampa di prova di tutto il contenuto api
-            console.log(data);
-            //rilancio la lettura
-            ajaxGet(urlApi);
-          },
-          error: function(errore) {
+  $(document).on('click', '.elimina', function() {
+    //alert("sono vivo 2");
+    var idData = $(this).attr("id")
+    console.log("id da eliminare : " + idData);
+    $.ajax({
+      url: urlApi + "/" + idData,
+      //uso delete per eliminare
+      type: "DELETE",
+      success: function(data) {
+        //faccio una stampa di prova di tutto il contenuto api
+        console.log(data);
+        //rilancio la lettura
+        ajaxGet(urlApi);
+      },
+      error: function(errore) {
 
-          }
-        })
-      });
+      }
+    })
+  });
 
-
-
-  //funzione stampa api
-  function ajaxGet(urlApi){
+  //funzione lettura API
+  function ajaxGet(urlApi) {
     //creo una chiamata ajax per connettermi e leggere tutto
     $.ajax({
       url: urlApi,
@@ -67,7 +65,8 @@ $(document).ready(function() {
       }
     })
   }
-  function stampaApi(data){
+  //funzione stampa api
+  function stampaApi(data) {
     //eseguo il ciclo per stampare
     for (var i = 0; i < data.length; i++) {
       //variabilizzo il valore la propieta text di data
@@ -77,7 +76,7 @@ $(document).ready(function() {
       console.log(id);
       //resetto
       //stamp in html
-      $("#listaApi").append("<li id=" + id + " class='elimina'>" + testoApi + "<i id='btnCancella' class='fas fa-trash-alt'></i>"+ "</li>");
+      $("#listaApi").append("<li id=" + id + " class='elimina modifica'>" + testoApi + "<i id='btnModifica' class='fas fa-edit'></i>" + "<i id='btnCancella' class='fas fa-trash-alt'></i>" + "</li>");
       $("#listaApi").html();
 
     }
