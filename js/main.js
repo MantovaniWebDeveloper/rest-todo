@@ -16,19 +16,28 @@ $(document).ready(function() {
     }
   })
 
-/*  //creo una chiamata ajax per connettermi e scrivere nuova nota
-  $.ajax({
-    url: urlApi,
-    //uso get per lettura
-    type: "POST",
-    success: function(data) {
-      console.log(data);
+  //creo una chiamata ajax per connettermi e scrivere nuova nota
 
-    },
-    error: function(errore) {
+  $("#btnSalva").click(function(){
+      //alert("sono vivo 2");
+      $.ajax({
+        url: urlApi,
+        //uso get per lettura
+        type: "POST",
+        data : {
+          "text": $('#inputNota').val()
+        },
+        success: function(data) {
+          //faccio una stampa di prova di tutto il contenuto api
+          console.log(data);
+        },
+        error: function(errore) {
 
-    }
-  })*/
+        }
+      })
+    });
+
+
 
   //funzione stampa api
   function stampaApi(data){
