@@ -1,7 +1,7 @@
 $(document).ready(function() {
   //salvo in variabilie indirizzo api
   var urlApi = "http://157.230.17.132:3006/todos";
-  //creo una chiamata ajax per connettermi
+  //creo una chiamata ajax per connettermi e leggere tutto
   $.ajax({
     url: urlApi,
     //uso get per lettura
@@ -16,6 +16,20 @@ $(document).ready(function() {
     }
   })
 
+/*  //creo una chiamata ajax per connettermi e scrivere nuova nota
+  $.ajax({
+    url: urlApi,
+    //uso get per lettura
+    type: "POST",
+    success: function(data) {
+      console.log(data);
+
+    },
+    error: function(errore) {
+
+    }
+  })*/
+
   //funzione stampa api
   function stampaApi(data){
     //eseguo il ciclo per stampare
@@ -29,6 +43,5 @@ $(document).ready(function() {
       $("#listaApi").append("<li>" + testoApi + "</li>");
     }
   }
-
 
 });
